@@ -1,7 +1,9 @@
 <hr>
-# ____________________Tone.Pusher
+
+# ____________________Tone. Pusher
 
 <hr>
+
 ### <u>Project Phases</u>
 
 | Phase One | Phase Two| Phase Three |
@@ -13,14 +15,14 @@
 
 <hr>
 
-
 ## ------------------------------ <u>Frontend</u> -------------------------
+
 ### <u>Links</u>
 
-- [GitHub (Frontend)](https://github.com/kelstrother/vuezik-capstone-front)
-- [Netlify Deployment]()
-- [Mobile Wireframe Main](https://res.cloudinary.com/kels-cloud/image/upload/v1614636532/Capstone/Capstone-mobile-song_cdbvn5.jpg)
-- [Mobile Wireframe Playlist](https://res.cloudinary.com/kels-cloud/image/upload/v1614636529/Capstone/capstone-mobile-pl_tewnqq.jpg)
+* [GitHub (Frontend)](https://github.com/kelstrother/vuezik-capstone-front)
+* [Netlify Deployment]()
+* [Mobile Wireframe Main](https://res.cloudinary.com/kels-cloud/image/upload/v1614636532/Capstone/Capstone-mobile-song_cdbvn5.jpg)
+* [Mobile Wireframe Playlist](https://res.cloudinary.com/kels-cloud/image/upload/v1614636529/Capstone/capstone-mobile-pl_tewnqq.jpg)
 
 ### <u>Project Overview</u>
 
@@ -28,19 +30,18 @@ A basic mp3 player that allows users to download, play, and upload songs. They w
 
 ### <u>MVP</u> (Frontend)
 
-- Build player interface
-- Build components
-- Create basic functionality
-- Render data/songs on page
-- Basic Styling
-
+* Build player interface
+* Build components
+* Create basic functionality
+* Render data/songs on page
+* Basic Styling
 
 ### <u>Post MVP</u> (Frontend)
 
-- Create interactive animations.
-- Include an option for a playable virtual instrument.
-- Ability to stream the audio.
-- Favorites
+* Create interactive animations.
+* Include an option for a playable virtual instrument.
+* Ability to stream the audio.
+* Favorites
 
 ### <u>Components</u>
 
@@ -65,6 +66,7 @@ A basic mp3 player that allows users to download, play, and upload songs. They w
 | Total | H | 39hrs| hrs | hrs |
 
 #### <u>Additional Libraries</u>
+
 N/A
 
 #### <u>Code Snippet</u>
@@ -73,11 +75,10 @@ N/A
 
 ## ------------------<u>Backend with Ruby on Rails</u>-----------------
 
-
 ### <u>Links</u>
 
-- [GitHub (Backend)](https://github.com/kelstrother/vuezik_backend)
-- [Heroku Deployment]()
+* [GitHub (Backend)](https://github.com/kelstrother/vuezik_backend)
+* [Heroku Deployment]()
 
 ### <u>User Stories</u>
 
@@ -87,29 +88,36 @@ User can upload songs. (POST)
 User can Delete songs. (DELETE)
 
 ### <u>Models</u>
+
 ##### Catalog
-- belongs to song
-- belongs to playlist
+
+* belongs to song
+* belongs to playlist
+
 ##### Song
-- has many :catalogs
-- has many playlists through catalogs
+
+* has many :catalogs
+* has many playlists through catalogs
+
 ##### Playlist
-- has many :catalogs
-- has many songs through catalogs
+
+* has many :catalogs
+* has many songs through catalogs
+
 ### <u>MVP</u> (Backend)
 
-- Build out backend with ability to store audio files via Rails active storage.
-- CRUD route functionality.
-- Upload Functionality.
+* Build out backend with ability to store audio files via Rails active storage.
+* CRUD route functionality.
+* Upload Functionality.
 
 ### <u>Post MVP</u> (Backend)
 
-- Incorporate third party storage for streaming capability.
-- Incorporate albums and more artists into the app
+* Incorporate third party storage for streaming capability.
+* Incorporate albums and more artists into the app
 
 #### <u>Additional Libraries</u>
-N/A
 
+N/A
 
 ### <u>Time Estimation</u>
 
