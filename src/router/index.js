@@ -8,23 +8,28 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/about",
     name: "About",
-    component: () => import("../views/About.vue")
+    component: () => import("../views/About.vue"),
   },
   {
     path: "/login",
     name: "Login",
-    component: () => import("../views/Login.vue")
+    component: () => import("../views/Login.vue"),
   },
   {
     path: "/register",
     name: "Register",
-    component: () => import("../views/Register.vue")
-  }
+    component: () => import("../views/Register.vue"),
+  },
+  {
+    path: "/songlist",
+    name: "SongList",
+    component: () => import("../views/SongList.vue"),
+  },
   // {
   //   path: '/profile',
   //   name: 'Profile',
@@ -35,16 +40,11 @@ const routes = [
   //   name: 'Upload',
   //   component: () => import('../views/Upload.vue')
   // },
-  // {
-  //   path: '/songlist',
-  //   name: 'SongList',
-  //   component: () => import('../views/SongList.vue')
-  // },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;

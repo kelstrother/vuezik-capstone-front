@@ -1,11 +1,12 @@
 <template>
-  <router-view />
   <div>
     <div id="nav">
+      <router-link to="/songlist">Songs</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/register">Register</router-link> |
       <router-link to="/about">About</router-link> |
     </div>
+  <router-view />
   </div>
 </template>
 
@@ -30,50 +31,6 @@ export default {
     });
   }
 };
-    //   const data = ref(null);
-    //   const loading = ref(true);
-    //   const error = ref(null);
-
-    //   function fetchdata() {
-    //     loading.value = true;
-    //     return fetch("http://localhost:3000/songs", {
-    //       method: "get",
-    //       headers: {
-    //         "content-type": "application/json"
-    //       }
-    //     })
-    //       .then(res => {
-    //         if (!res.ok) {
-    //           const error = new Error(res.statusText);
-    //           error.json = res.json();
-    //           throw error;
-    //         }
-    //         return res.json();
-    //       })
-    //       .then(json => {
-    //         data.value = json.data;
-    //         console.log("this is data", json);
-    //       })
-    //       .catch(err => {
-    //         error.value = err;
-    //         if (err.json) {
-    //           return err.json.then(json => {
-    //             error.value.message = json.message;
-    //           });
-    //         }
-    //       })
-    //       .then(() => {
-    //         loading.value = false;
-    //       });
-    //   }
-    //   onMounted(() => {
-    //     fetchdata();
-    //   });
-    //   return {
-    //     data,
-    //     loading,
-    //     error
-    //   };
 </script>
 
 <style lang="scss">
@@ -98,7 +55,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-a {
+#nav a {
+  color: #fff;
   text-decoration: none;
+  padding: 1em;
+}
+#nav a.router-link-exact-active {
+  color: gold;
 }
 </style>
