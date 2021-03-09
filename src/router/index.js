@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { createRouter, createWebHistory } from "vue-router";
+import "../firebase/config.js";
 import Home from "../views/Home.vue";
-// import Login from "../views/Login.vue";
-// import Register from "../views/Register.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import CreatePlaylist from "../views/playlists/CreatePlaylist.vue";
 
 const routes = [
   {
@@ -11,25 +13,30 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    component: () => import("../views/About.vue"),
-  },
-  {
     path: "/login",
     name: "Login",
-    component: () => import("../views/Login.vue"),
+    component: Login,
   },
   {
     path: "/register",
     name: "Register",
-    component: () => import("../views/Register.vue"),
+    component: Register,
   },
   {
-    path: "/songlist",
-    name: "SongList",
-    component: () => import("../views/SongList.vue"),
+    path: "/playlists/create",
+    name: "CreatePlaylist",
+    component: CreatePlaylist,
   },
+  {
+    path: "/about",
+    name: "About",
+    component: Home,
+  },
+  // {
+  //   path: "/songlist",
+  //   name: "SongList",
+  //   component: SongList
+  // },
   // {
   //   path: '/profile',
   //   name: 'Profile',

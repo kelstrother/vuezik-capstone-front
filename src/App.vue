@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div id="nav">
-      <router-link to="/songlist">Songs</router-link> |
+    <router-view />
+    <!-- <div id="nav">
+      <router-link to="/"></router-link>
       <router-link to="/login">Login</router-link> |
       <router-link to="/register">Register</router-link> |
       <router-link to="/about">About</router-link> |
-    </div>
-  <router-view />
+    </div> -->
   </div>
 </template>
 
@@ -23,13 +23,13 @@ export default {
     onBeforeMount(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
-          router.replace('/login')
+          router.replace("/login");
         } else if (route.path == "/login" || route.path == "/register") {
-          router.replace('/')
+          router.replace("/");
         }
       });
     });
-  }
+  },
 };
 </script>
 
@@ -55,12 +55,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-#nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 1em;
-}
-#nav a.router-link-exact-active {
-  color: gold;
-}
+// #nav {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 7vh;
+// }
+// #nav a {
+//   font-size: 1.3vh;
+//   color: #fff;
+//   text-decoration: none;
+//   padding: 1em;
+// }
+// #nav a.router-link-exact-active {
+//   color: gold;
+// }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h1>Login</h1>
-    <form @submit.prevent="Login">
+    <form @submit.prevent="handleSubmit">
       <input
         class="email-input"
         type="text"
@@ -14,6 +14,7 @@
         placeholder="Password"
         v-model="password"
       />
+      <div class="error">{{ error }}</div>
       <input class="btn" type="submit" value="Login" />
       <p>
         Need an account?
@@ -27,27 +28,39 @@
 
 <script>
 import { ref } from "vue";
-import firebase from "firebase";
+// import firebase from "firebase";
+import useLogin from "../composables/useLogin";
 
 export default {
   setup() {
     const email = ref("");
     const password = ref("");
 
-    const Login = () => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email.value, password.value)
-        .then(data => console.log(data))
-        .catch(err => alert(err.message));
-    };
+    // eslint-disable-next-line no-unused-vars
+    const { error, login } = useLogin();
 
-    return {
-      Login,
-      email,
-      password
+    const handleSubmit = async () => {
+      await login(email.value, password.value);
+      if (!error.value) {
+        console.log("user logged in");
+      }
     };
-  }
+    return { email, password, handleSubmit };
+
+    // const Login = () => {
+    //   firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword(email.value, password.value)
+    //     .then(data => console.log(data))
+    //     .catch(err => alert(err.message));
+    // };
+
+    // return {
+    //   Login,
+    //   email,
+    //   password
+    // };
+  },
 };
 </script>
 

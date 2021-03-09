@@ -1,7 +1,14 @@
+/* eslint-disable no-unused-vars */
 <template>
   <div class="register">
-    <h1>Register</h1>
-    <form @submit.prevent="Register">
+    <form @submit.prevent="handleSubmit">
+      <input
+        class="email-input"
+        type="text"
+        required
+        placeholder="Username"
+        v-model="displayName"
+      />
       <input
         class="email-input"
         type="text"
@@ -14,7 +21,8 @@
         placeholder="Password"
         v-model="password"
       />
-      <input class="btn-submit" type="submit" value="Register" />
+      <div class="error">{{ error }}</div>
+      <input class="btn" type="submit" value="Register" />
       <p>
         Already have an account?
         <router-link to="/login"><strong> Login Here</strong></router-link>
@@ -24,29 +32,42 @@
 </template>
 
 <script>
-import firebase from "firebase";
+// import firebase from "firebase";
 import { ref } from "vue";
+import useRegister from "../composables/useRegister";
 
 export default {
   setup() {
+    // eslint-disable-next-line no-unused-vars
+    const { error, register } = useRegister();
+
+    const displayName = ref("");
     const email = ref("");
     const password = ref("");
 
-    const Register = () => {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value)
-        .then(user => {
-          alert(user.email);
-        })
-        .catch(err => alert(err.message));
+    const handleSubmit = async () => {
+      await register(email.value, password.value, displayName.value);
+      console.log("user registered")
     };
+    // const Register = () => {
+    //   firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(displayName.value, email.value, password.value)
+    //     .then((user) => {
+    //       console.log(user.displayName);
+    //       // alert("Welcome, ", user.userName, "!");
+    //     })
+    //     .catch((err) => alert(err.message));
+    // };
     return {
-      Register,
+      // Register,
+      displayName,
       email,
-      password
+      password,
+      handleSubmit,
+      error
     };
-  }
+  },
 };
 </script>
 
@@ -91,11 +112,10 @@ export default {
       color: #fff;
       padding: 0.9em;
     }
-    .btn-submit {
+    .btn {
       padding: 0.5em;
       margin-top: 1em;
-      width: 13%;
-      border-radius: 5px;
+      width: 25%;
     }
   }
   p {
