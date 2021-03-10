@@ -14,7 +14,8 @@
       <input type="file" class="browse" @change="handleChange" />
       <div class="error">{{ fileError }}</div>
       <div class="error"></div>
-      <button>Upload</button>
+      <button v-if="!isPending">Upload</button>
+      <button v-else disabled>Working...</button>
     </form>
   </div>
 </template>
@@ -22,19 +23,36 @@
 <script>
 import useStorage from "@/composables/useStorage";
 import { ref } from "vue";
+import getUser from "../../composables/getUser";
+import useCollection from "../../composables/useCollection";
 export default {
   setup() {
     // eslint-disable-next-line no-unused-vars
     const { filePath, url, uploadSong } = useStorage();
+    const { error, addDoc } = useCollection("playlists");
+    const { user } = getUser();
 
     const title = ref("");
-    const file = ref("");
+    const file = ref(null);
     const fileError = ref(null);
+    // const isPending =ref(false)
 
     const handleSubmit = async () => {
       if (file.value) {
+        // ispending.value = true
         await uploadSong(file.value);
-        console.log("song uploaded, url:", url.value)
+        await addDoc({
+          title: title.value,
+          userId: user.value.uid,
+          userName: user.value.displayName,
+          audioUrl: url.value,
+          filePath: filePath.value,
+          songs: [],
+        });
+        // ispending.value = false
+        if (!error.value) {
+          console.log("playlist added");
+        }
       }
     };
     //  ALLOWED FILE TYPES
