@@ -15,7 +15,7 @@
         v-model="password"
       />
       <div class="error">{{ error }}</div>
-      <button class="btn-li">Login</button>
+      <button class="btn-li" v-if="!isPending">Login</button>
       <!-- <input class="btn" type="submit" value="Login" /> -->
       <p>
         Need an account?
@@ -38,7 +38,7 @@ export default {
     const password = ref("");
 
     // eslint-disable-next-line no-unused-vars
-    const { error, login } = useLogin();
+    const { error, login, isPending } = useLogin();
 
     const handleSubmit = async () => {
       await login(email.value, password.value);

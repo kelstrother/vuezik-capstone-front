@@ -3,9 +3,11 @@ import { ref } from "vue";
 import { projectAuth } from "../firebase/config";
 
 const error = ref(null);
+const isPending = ref(false);
 
 const register = async (email, password, displayName) => {
   error.value = null;
+  isPending.value = true;
 
   try {
     const res = await projectAuth.createUserWithEmailAndPassword(
@@ -17,6 +19,7 @@ const register = async (email, password, displayName) => {
     }
     await res.user.updateProfile({ displayName });
     error.value = null;
+    isPending.value = false;
 
     console.log(res.user)
 
@@ -28,7 +31,7 @@ const register = async (email, password, displayName) => {
 };
 
 const useRegister = () => {
-  return { error, register };
+  return { error, register, isPending };
 };
 
 export default useRegister;

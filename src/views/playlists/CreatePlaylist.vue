@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */ /* eslint-disable no-unused-vars */
 <template>
   <div class="playlist-container">
     <form @submit.prevent="handleSubmit">
@@ -14,49 +14,54 @@
       <input type="file" class="browse" @change="handleChange" />
       <div class="error">{{ fileError }}</div>
       <div class="error"></div>
-      <button v-if="!isPending">Upload</button>
-      <button v-else disabled>Working...</button>
+      <button>Upload</button>
     </form>
   </div>
 </template>
 
 <script>
-import useStorage from "@/composables/useStorage";
 import { ref } from "vue";
-import getUser from "../../composables/getUser";
-import useCollection from "../../composables/useCollection";
+import useStorage from "@/composables/useStorage";
+import useCollection from "@/composables/useCollection";
+import getUser from "@/composables/getUser";
+import { timestamp } from "@/firebase/config";
+
 export default {
   setup() {
     // eslint-disable-next-line no-unused-vars
     const { filePath, url, uploadSong } = useStorage();
+    // eslint-disable-next-line no-unused-vars
     const { error, addDoc } = useCollection("playlists");
+    // eslint-disable-next-line no-unused-vars
     const { user } = getUser();
-
     const title = ref("");
     const file = ref(null);
     const fileError = ref(null);
-    // const isPending =ref(false)
+    // const isPending =ref(false);
 
     const handleSubmit = async () => {
       if (file.value) {
-        // ispending.value = true
+        // eslint-disable-next-line no-undef
         await uploadSong(file.value);
+        // console.log("song uploaded, url: ", url.value);
         await addDoc({
           title: title.value,
           userId: user.value.uid,
           userName: user.value.displayName,
-          audioUrl: url.value,
+          songUrl: url.value,
           filePath: filePath.value,
           songs: [],
-        });
-        // ispending.value = false
+          createdAt: timestamp()
+        })
+        // eslint-disable-next-line no-undef
         if (!error.value) {
           console.log("playlist added");
         }
       }
     };
     //  ALLOWED FILE TYPES
-    const types = ["audio/mpeg", "audio/wav"];
+    const types = ["audio/mpeg", "audio/wav", "image/jpeg", "image/png"];
+    // "audio/mpeg"
 
     const handleChange = (e) => {
       const selected = e.target.files[0];
@@ -71,7 +76,7 @@ export default {
       }
     };
 
-    return { title, handleSubmit, handleChange, fileError };
+    return { title, handleSubmit, handleChange, fileError, timestamp };
   },
 };
 </script>

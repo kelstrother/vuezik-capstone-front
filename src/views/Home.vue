@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <p class="listener">{{ name }}</p> -->
-    <h1>Vuezic</h1>
+    <Header />
     <!-- <router-link to="/about">About</router-link> -->
     <div class="console"></div>
     <br />
@@ -17,9 +17,10 @@
 import Navbar from "../components/Navbar.vue";
 import { ref, onBeforeMount } from "vue";
 import firebase from "firebase";
+import Header from '../components/Header'
 
 export default {
-  components: { Navbar },
+  components: { Navbar, Header },
   setup() {
     const name = ref("");
 
