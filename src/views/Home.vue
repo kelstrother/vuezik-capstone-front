@@ -62,7 +62,7 @@ p {
   justify-content: flex-start;
   align-items: center;
   background-color: #2c3e50;
-  height: 93vh;
+  height: 90vh;
   color: #f4f4f4;
 
   a {

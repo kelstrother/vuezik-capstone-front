@@ -6,6 +6,10 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import CreatePlaylist from "../views/playlists/CreatePlaylist.vue";
 
+
+// AUTH GUARD
+  // const navAuth = 
+
 const routes = [
   {
     path: "/",

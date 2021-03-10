@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 <template>
   <div class="playlist-container">
     <form @submit.prevent="handleSubmit">
@@ -13,21 +14,28 @@
       <input type="file" class="browse" @change="handleChange" />
       <div class="error">{{ fileError }}</div>
       <div class="error"></div>
-      <button>Create</button>
+      <button>Upload</button>
     </form>
   </div>
 </template>
 
 <script>
+import useStorage from "@/composables/useStorage";
 import { ref } from "vue";
 export default {
   setup() {
+    // eslint-disable-next-line no-unused-vars
+    const { filePath, url, uploadSong } = useStorage();
+
     const title = ref("");
     const file = ref("");
     const fileError = ref(null);
 
-    const handleSubmit = () => {
-      if (file.value) console.log(title.value, file.value);
+    const handleSubmit = async () => {
+      if (file.value) {
+        await uploadSong(file.value);
+        console.log("song uploaded, url:", url.value)
+      }
     };
     //  ALLOWED FILE TYPES
     const types = ["audio/mpeg", "audio/wav"];

@@ -1,8 +1,8 @@
 <template>
-  <nav v-if="user" class="nav-container">
+  <nav v-if="user" class="nav">
     <p class="username">{{ user.displayName }}</p>
     <p class="email">{{ user.email }}</p>
-    <button class="btn" @click="handleClick">Logout</button>
+    <button class="btn-lo" @click="handleClick">Logout</button>
   </nav>
 </template>
 
@@ -35,15 +35,23 @@ export default {
 </script>
 
 <style scoped>
-.nav-container {
-  background: transparent;
-  height: 10vh;
+.nav {
+  background: rgba(8, 8, 8, 0.5);
+  min-height: 200px;
+  /* height: auto; */
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
-.btn,
+.btn-lo {
+   background-color: rgba(5, 55, 111, 1);
+}
+.btn-lo:hover {
+   cursor: pointer;
+   color: var(--accent);
+}
+.btn-lo,
 p {
   margin-bottom: 1em;
 }

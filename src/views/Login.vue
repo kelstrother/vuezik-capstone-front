@@ -15,7 +15,8 @@
         v-model="password"
       />
       <div class="error">{{ error }}</div>
-      <input class="btn" type="submit" value="Login" />
+      <button class="btn-li">Login</button>
+      <!-- <input class="btn" type="submit" value="Login" /> -->
       <p>
         Need an account?
         <router-link to="/register"
@@ -104,11 +105,10 @@ export default {
       color: #fff;
       padding: 0.9em;
     }
-    .btn {
+    .btn-li {
       padding: 0.5em;
-      margin-top: 1em;
+      margin: 1em 0;
       border: none;
-      width: 13%;
       border-radius: 5px;
     }
   }
