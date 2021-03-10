@@ -14,9 +14,11 @@
       <input type="file" class="browse" @change="handleChange" />
       <div class="error">{{ fileError }}</div>
       <div class="error"></div>
-      <button>Upload</button>
+      <button v-if="!isPending">Upload</button>
+      <button v-else disabled>Working...</button>
     </form>
   </div>
+  <Navbar />
 </template>
 
 <script>
@@ -25,6 +27,7 @@ import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
 import getUser from "@/composables/getUser";
 import { timestamp } from "@/firebase/config";
+// import Navbar from "../../components/Navbar"
 
 export default {
   setup() {
@@ -37,10 +40,11 @@ export default {
     const title = ref("");
     const file = ref(null);
     const fileError = ref(null);
-    // const isPending =ref(false);
+    const isPending = ref(false);
 
     const handleSubmit = async () => {
       if (file.value) {
+        isPending.value = true;
         // eslint-disable-next-line no-undef
         await uploadSong(file.value);
         // console.log("song uploaded, url: ", url.value);
@@ -51,8 +55,9 @@ export default {
           songUrl: url.value,
           filePath: filePath.value,
           songs: [],
-          createdAt: timestamp()
-        })
+          createdAt: timestamp(),
+        });
+        isPending.value = false;
         // eslint-disable-next-line no-undef
         if (!error.value) {
           console.log("playlist added");
@@ -61,7 +66,6 @@ export default {
     };
     //  ALLOWED FILE TYPES
     const types = ["audio/mpeg", "audio/wav", "image/jpeg", "image/png"];
-    // "audio/mpeg"
 
     const handleChange = (e) => {
       const selected = e.target.files[0];
@@ -76,7 +80,14 @@ export default {
       }
     };
 
-    return { title, handleSubmit, handleChange, fileError, timestamp };
+    return {
+      title,
+      handleSubmit,
+      handleChange,
+      fileError,
+      timestamp,
+      isPending
+    };
   },
 };
 </script>

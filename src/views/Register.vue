@@ -22,7 +22,9 @@
         v-model="password"
       />
       <div class="error">{{ error }}</div>
-      <input class="btn" type="submit" value="Register" />
+      <button v-if="!isPending">Register</button>
+      <button v-if="isPending" disabled>Loading</button>
+      <!-- <input class="btn" type="submit" value="Register" /> -->
       <p>
         Already have an account?
         <router-link to="/login"><strong> Login Here</strong></router-link>
@@ -39,15 +41,16 @@ import useRegister from "../composables/useRegister";
 export default {
   setup() {
     // eslint-disable-next-line no-unused-vars
-    const { error, register } = useRegister();
-
+    const { error, register, isPending } = useRegister();
     const displayName = ref("");
     const email = ref("");
     const password = ref("");
 
     const handleSubmit = async () => {
       await register(email.value, password.value, displayName.value);
-      console.log("user registered")
+      if (!error.value) {
+        console.log("user registered");
+      }
     };
     // const Register = () => {
     //   firebase
@@ -65,7 +68,8 @@ export default {
       email,
       password,
       handleSubmit,
-      error
+      error,
+      isPending,
     };
   },
 };

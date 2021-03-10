@@ -1,47 +1,26 @@
 <template>
   <div class="home">
-    <!-- <p class="listener">{{ name }}</p> -->
-    <Header />
-    <!-- <router-link to="/about">About</router-link> -->
-    <div class="console"></div>
-    <br />
-    <!-- <button class="btn-logout" @click="Logout">Logout</button> -->
+    <div v-if="error" class="error">
+      Could not find the playlists.
+    </div>
+    <div v-if="documents">
+    <PlaylistView :playlists="documents" />
+    </div>
   </div>
-  <Navbar />
-  <!-- <div class="nav">
-    <Navbar />
-  </div> -->
 </template>
 
 <script>
-import Navbar from "../components/Navbar.vue";
-import { ref, onBeforeMount } from "vue";
-import firebase from "firebase";
-import Header from '../components/Header'
+import PlaylistView from "../components/PlaylistView"
+import getCollection from "../composables/getCollection";
+
 
 export default {
-  components: { Navbar, Header },
+  name: "Home",
+  components: { PlaylistView },
   setup() {
-    const name = ref("");
+    const { error, documents } = getCollection("playlists");
 
-    onBeforeMount(() => {
-      const user = firebase.auth().currentUser;
-      if (user) {
-        name.value = user.email.split("@")[0];
-      }
-    });
-    // const Logout = () => {
-    //   firebase
-    //     .auth()
-    //     .signOut()
-    //     .then(() => console.log("Signed Out"))
-    //     .catch((err) => alert(err.message));
-    // };
-    return {
-      // name,
-      // Logout,
-      // showLogin,
-    };
+    return { error, documents };
   },
 };
 </script>
@@ -51,13 +30,13 @@ p {
   text-align: left;
 }
 .home {
-  background: rgb(28, 72, 111);
-  background: linear-gradient(
-    180deg,
-    rgba(28, 72, 111, 1) 0%,
-    rgba(5, 55, 111, 1) 21%,
-    rgba(30, 34, 40, 1) 87%
-  );
+  // background: rgb(28, 72, 111);
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(28, 72, 111, 1) 0%,
+  //   rgba(5, 55, 111, 1) 21%,
+  //   rgba(30, 34, 40, 1) 87%
+  // );
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -69,10 +48,10 @@ p {
   a {
     color: #f4f4f4;
   }
-  // .btn-logout {
-  //   padding: 0.5em;
-  //   margin-top: 4em;
-  //   border: none;
-  // }
 }
+// .btn-logout {
+//   padding: 0.5em;
+//   margin-top: 4em;
+//   border: none;
+// }
 </style>

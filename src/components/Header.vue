@@ -10,7 +10,7 @@ export default {
 
 <style>
 img {
-  max-height: 50vh;
+  max-height: 100vh;
   padding: 0;
 }
 </style>

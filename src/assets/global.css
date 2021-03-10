@@ -14,14 +14,14 @@
 }
 body {
   background: rgb(28, 72, 111);
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(28, 72, 111, 1) 0%,
     rgba(5, 55, 111, 1) 21%,
     rgba(30, 34, 40, 1) 87%
   );
-  background-repeat: no-repeat;
-}
+  background-repeat: no-repeat; */
+} 
 a {
   text-decoration: none;
   color: var(--secondary);

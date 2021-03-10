@@ -16,7 +16,7 @@
       />
       <div class="error">{{ error }}</div>
       <button class="btn-li" v-if="!isPending">Login</button>
-      <!-- <input class="btn" type="submit" value="Login" /> -->
+      <button class="btn-li" v-if="isPending" disabled>Loading..</button>
       <p>
         Need an account?
         <router-link to="/register"
@@ -106,10 +106,17 @@ export default {
       padding: 0.9em;
     }
     .btn-li {
-      padding: 0.5em;
       margin: 1em 0;
-      border: none;
-      border-radius: 5px;
+      background-color: transparent;
+      width: 100px;
+      font-size: 1.2rem;
+      color: rgba(230, 175, 38, 1);
+    }
+    .btn-li:hover {
+      cursor: pointer;
+      // background: var(--primary);
+      border: 1px solid rgba(230, 175, 38, 0.7);
+      color: rgba(230, 175, 38, 1);
     }
   }
   p {

@@ -6,13 +6,13 @@ const isPending = ref(false);
 
 const logout = async () => {
   error.value = null;
-  isPending.value = true 
+  isPending.value = true;
   try {
     await projectAuth.signOut();
   } catch (err) {
     console.log(err.message);
     error.value = err.message;
-    isPending.value = false
+    isPending.value = false;
   }
 };
 

@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 // import firebase from "firebase/app";
 import "./assets/global.css";
+import { projectAuth } from "./firebase/config";
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyC9cXtIbxD1BmJO_xdf0c_ZP-06sBCkUBw",
@@ -15,6 +16,12 @@ import "./assets/global.css";
 // // Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 
-createApp(App)
-  .use(router)
-  .mount("#app");
+let app
+
+projectAuth.onAuthStateChanged(() => {
+  if (!app) {
+   app = createApp(App)
+      .use(router)
+      .mount("#app");
+  }
+});
