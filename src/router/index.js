@@ -6,32 +6,26 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import CreatePlaylist from "../views/playlists/CreatePlaylist.vue";
 import PlaylistView from "../components/PlaylistView.vue";
-import Main from "../views/Main.vue";
-// import About from "../views/About.vue"
+import ListDetails from "../components/ListDetails.vue";
+import VuezicMachine from "../components/VuezicMachine.vue"
 
 // route guard
-import { projectAuth } from '../firebase/config'
+// import { projectAuth } from '../firebase/config'
 
-const requireAuth = (to, from, next) => {
-  let user = projectAuth.currentUser
-  if (!user) {
-    next({ name: "Login" })
-  } else {
-    next()
-  }
-}
+// const requireAuth = (to, from, next) => {
+//   let user = projectAuth.currentUser
+//   if (!user) {
+//     next({ name: "Login" })
+//   } else {
+//     next()
+//   }
+// }
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
-    beforeEnter: requireAuth
-  },
-  {
-    path: "/main",
-    name: "Main",
-    component: Main
   },
   {
     path: "/login",
@@ -52,29 +46,20 @@ const routes = [
     path: "/playlists/create",
     name: "CreatePlaylist",
     component: CreatePlaylist,
-    beforeEnter: requireAuth
   },
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   component: About
-  // }
-  // {
-  //   path: "/songlist",
-  //   name: "SongList",
-  //   component: SongList
-  // },
-  // {
-  //   path: '/profile',
-  //   name: 'Profile',
-  //   component: () => import('../views/Profile.vue')
-  // },
-  // {
-  //   path: '/upload',
-  //   name: 'Upload',
-  //   component: () => import('../views/Upload.vue')
-  // },
-];
+  {
+    path: "/playlists/:id",
+    name: "ListDetails",
+    component: ListDetails,
+    props: true,
+  },
+  {
+    path: "/vuezicplayer",
+    name: "VuezicMachine",
+    component: VuezicMachine,
+  }
+]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

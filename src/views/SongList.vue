@@ -4,7 +4,6 @@
     <div v-for="song in songs" :key="song.id" class="song-map">
       <h3 class="title">{{ song.title }}</h3>
       <p class="artist">Artist: <span class="spanArt">{{ song.artist }}</span></p>
-      <!-- <p class="album">{{ song.album }}</p> -->
     </div>
   </div>
 </template>
@@ -29,7 +28,6 @@ export default {
 
 .songlist-container {
   margin-top: 3em;
-  height: 100vh;
 }
 .songlist-container h1 {
   color: goldenrod;

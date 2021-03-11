@@ -1,9 +1,9 @@
 <template>
   <nav v-if="user" class="nav">
-    <p class="username">{{ user.displayName }}</p>
-    <router-link to="/">Music</router-link>
-    <router-link to="/playlists">Playlists</router-link>
-    <router-link to="/playlists/create">Add Playlist</router-link>
+    <p class="username">{{ user.displayName }} |</p>
+    <router-link to="/">Playlists |</router-link>
+    <router-link to="/vuezicplayer">Vuezic Player |</router-link>
+    <router-link to="/playlists/create">Add Playlist |</router-link>
     <button class="btn-lo" @click="handleClick">Logout</button>
   </nav>
 </template>
@@ -38,7 +38,8 @@ export default {
 
 <style>
 .nav {
-  background-color: rgb(45, 45, 87);
+  backdrop-filter: blur(2px);
+  background: rgba(3, 0, 0, 0.3);
   height: 10vh;
   display: flex;
   flex-direction: row;
@@ -48,20 +49,22 @@ export default {
   bottom: 0;
   width: 100vw;
 }
+a {
+  font-size: 1.2rem;
+}
 .username {
   color: rgb(230, 175, 38);
   font-size: 1.1rem;
 }
 .btn-lo {
-  background-color: rgba(214, 163, 34, 0.8);
+  border: 1px solid #ff9500;
+  margin: 1em 0;
+  background-color: transparent;
   width: 100px;
   font-size: 1.2rem;
-  color: #333;
 }
 .btn-lo:hover {
   cursor: pointer;
-  background: var(--primary);
-  border: 1px solid rgba(230, 175, 38, 0.7);
-  color: rgba(230, 175, 38, 1);
+  color: #ff9500;
 }
 </style>

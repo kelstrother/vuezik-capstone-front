@@ -1,5 +1,7 @@
 <template>
-  <img src="../assets/background.svg" alt="vuezic logo" />
+  <header class="header">
+    <img src="../assets/background.svg" alt="vuezic logo" />
+  </header>
 </template>
 
 <script>
@@ -8,9 +10,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.header {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 img {
-  max-height: 100vh;
+  margin-top: 2em;
+  height: 40em;
   padding: 0;
 }
 </style>

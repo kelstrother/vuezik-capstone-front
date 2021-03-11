@@ -47,46 +47,22 @@ export default {
       }
     };
     return { email, password, handleSubmit };
-
-    // const Login = () => {
-    //   firebase
-    //     .auth()
-    //     .signInWithEmailAndPassword(email.value, password.value)
-    //     .then(data => console.log(data))
-    //     .catch(err => alert(err.message));
-    // };
-
-    // return {
-    //   Login,
-    //   email,
-    //   password
-    // };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .login {
-  background: rgb(28, 72, 111);
-  background: linear-gradient(
-    180deg,
-    rgba(28, 72, 111, 1) 0%,
-    rgba(5, 55, 111, 1) 21%,
-    rgba(30, 34, 40, 1) 87%
-  );
-  margin: 0;
+  text-align: center;
+  background-repeat: no-repeat;
+  margin-top: -10rem;
   padding: 0;
   box-sizing: border-box;
   color: #f4f4f4;
-  background-color: #2c3e50;
-  height: 100vh;
 
-  h1 {
-    margin-bottom: 1em;
-  }
   form {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
     align-items: center;
 
@@ -96,27 +72,24 @@ export default {
       border-radius: 5px;
     }
     .email-input {
-      background-color: rgba(14, 22, 49, 0.3);
       color: #fff;
-      padding: 0.9em;
+      padding: 0.5em;
     }
     .password-input {
-      background-color: rgba(14, 22, 49, 0.3);
       color: #fff;
-      padding: 0.9em;
+      padding: 0.5em;
     }
     .btn-li {
+      border: 1px solid #ff9500;
       margin: 1em 0;
       background-color: transparent;
       width: 100px;
       font-size: 1.2rem;
-      color: rgba(230, 175, 38, 1);
+      // color: #ff9500;
     }
     .btn-li:hover {
       cursor: pointer;
-      // background: var(--primary);
-      border: 1px solid rgba(230, 175, 38, 0.7);
-      color: rgba(230, 175, 38, 1);
+      color: #ff9500;
     }
   }
   p {

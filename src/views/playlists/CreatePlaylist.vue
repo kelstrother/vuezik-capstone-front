@@ -3,6 +3,7 @@
   <div class="playlist-container">
     <form @submit.prevent="handleSubmit">
       <h3>Create New Playlist</h3>
+      <label>Name your Playlist</label>
       <input
         type="text"
         required
@@ -10,7 +11,7 @@
         class="playlist-title"
         v-model="title"
       />
-      <label>Add a Song</label>
+      <label>Upload an Image or Song</label>
       <input type="file" class="browse" @change="handleChange" />
       <div class="error">{{ fileError }}</div>
       <div class="error"></div>
@@ -27,7 +28,8 @@ import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
 import getUser from "@/composables/getUser";
 import { timestamp } from "@/firebase/config";
-// import Navbar from "../../components/Navbar"
+import { useRouter, useRoute } from "vue-router";
+
 
 export default {
   setup() {
@@ -41,6 +43,7 @@ export default {
     const file = ref(null);
     const fileError = ref(null);
     const isPending = ref(false);
+    const router = useRouter;
 
     const handleSubmit = async () => {
       if (file.value) {
@@ -48,7 +51,7 @@ export default {
         // eslint-disable-next-line no-undef
         await uploadSong(file.value);
         // console.log("song uploaded, url: ", url.value);
-        await addDoc({
+        const res = await addDoc({
           title: title.value,
           userId: user.value.uid,
           userName: user.value.displayName,
@@ -60,11 +63,11 @@ export default {
         isPending.value = false;
         // eslint-disable-next-line no-undef
         if (!error.value) {
-          console.log("playlist added");
+          router.push({ name: "ListDetails", params: { id: res.id } });
         }
       }
     };
-    //  ALLOWED FILE TYPES
+
     const types = ["audio/mpeg", "audio/wav", "image/jpeg", "image/png"];
 
     const handleChange = (e) => {
@@ -85,8 +88,7 @@ export default {
       handleSubmit,
       handleChange,
       fileError,
-      timestamp,
-      isPending
+      isPending,
     };
   },
 };
@@ -94,15 +96,26 @@ export default {
 
 <style scoped>
 .playlist-container {
-  height: 100vh;
-  overflow: auto;
+  margin-top: -20em;
 }
-form {
-  margin-top: 3em;
+input {
+  box-shadow: 2px 2px 15px rgba(41, 39, 39, 0.5);
 }
 .playlist-title {
-  height: 2.4vh;
-  /* font-weight: bold; */
-  border-bottom: 1px solid var(--secondary);
+  height: 4.4vh;
+  border-radius: 5px;
+  border: none;
+}
+button {
+  box-shadow: 2px 2px 15px rgba(41, 39, 39, 0.5);
+  border: 1px solid #ff9500;
+  margin: 1em 0;
+  background-color: transparent;
+  width: 100px;
+  font-size: 1.2rem;
+}
+button:hover {
+  cursor: pointer;
+  color: #ff9500;
 }
 </style>

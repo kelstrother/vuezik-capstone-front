@@ -10,7 +10,6 @@
 </script>
 <style scoped>
 .about {
-  height: 100vh;
   color: #f4f4f4;
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
+  <header class="header-container">
+    <Header class="h-comp"/>
+  </header>
     <router-view />
   <div class="content">
-    <!-- <img src="./assets/background.svg" alt="vuezic logo" /> -->
-    <!-- <Header /> -->
     <Navbar />
   </div>
 </template>
@@ -12,11 +13,11 @@ import Navbar from "./components/Navbar";
 import { onBeforeMount } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import firebase from "firebase";
-// import Header from "./components/Header";
-// import Home from "./views/Home"
+import Header from "./components/Header";
+
 
 export default {
-  components: { Navbar },
+  components: { Navbar, Header },
   setup() {
     const router = useRouter();
     const route = useRoute();
@@ -35,9 +36,19 @@ export default {
 </script>
 
 <style lang="scss">
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.h-comp {
+  margin-left: -7em;
+}
+.z-comp {
+  margin: 2em 3em 0 0;
+}
 .content {
   margin: 0 auto;
-  // max-width: 2000px;
   padding: 0;
   height: 100vh;
 }
@@ -45,6 +56,5 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // text-align: center;
 }
 </style>

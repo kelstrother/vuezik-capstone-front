@@ -20,7 +20,7 @@
 ### <u>Links</u>
 
 * [GitHub (Frontend)](https://github.com/kelstrother/vuezik-capstone-front)
-* [Netlify Deployment]()
+* [Netlify Deployment](https://vuezic.web.app/)
 * [Mobile Wireframe Main](https://res.cloudinary.com/kels-cloud/image/upload/v1614636532/Capstone/Capstone-mobile-song_cdbvn5.jpg)
 * [Mobile Wireframe Playlist](https://res.cloudinary.com/kels-cloud/image/upload/v1614636529/Capstone/capstone-mobile-pl_tewnqq.jpg)
 
@@ -73,12 +73,10 @@ N/A
 
 <hr>
 
-## ------------------<u>Backend with Ruby on Rails</u>-----------------
+## ------------------<u>Backend with Firebase</u>-----------------
 
 ### <u>Links</u>
 
-* [GitHub (Backend)](https://github.com/kelstrother/vuezik_backend)
-* [Heroku Deployment]()
 
 ### <u>User Stories</u>
 
