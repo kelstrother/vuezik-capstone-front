@@ -5,16 +5,6 @@
 <hr>
 
 ### <u>Project Phases</u>
-
-| Phase One | Phase Two| Phase Three |
-| :---: |  :---: | :---: |
-
-<img src="https://media.giphy.com/media/6utVzLiyU9OuHbd70D/giphy.gif" width="250" height="130">|
-<img src="https://media.giphy.com/media/hrRJ41JB2zlgZiYcCw/giphy.gif" width="250" height="130"> |
-<img src="https://media.giphy.com/media/ku5EcFe4PNGWA/giphy.gif" width="250" height="130">
-
-<hr>
-
 ## ------------------------------ <u>Frontend</u> -------------------------
 
 ### <u>Links</u>
