@@ -29,7 +29,6 @@
 
 <script>
 import { ref } from "vue";
-// import firebase from "firebase";
 import useLogin from "../composables/useLogin";
 
 export default {
@@ -54,8 +53,7 @@ export default {
 <style lang="scss" scoped>
 .login {
   text-align: center;
-  background-repeat: no-repeat;
-  margin-top: -10rem;
+  margin-top: 5em;
   padding: 0;
   box-sizing: border-box;
   color: #f4f4f4;
@@ -64,6 +62,7 @@ export default {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    max-width: 400px;
     align-items: center;
 
     input {
@@ -72,11 +71,9 @@ export default {
       border-radius: 5px;
     }
     .email-input {
-      color: #fff;
       padding: 0.5em;
     }
     .password-input {
-      color: #fff;
       padding: 0.5em;
     }
     .btn-li {
@@ -85,7 +82,6 @@ export default {
       background-color: transparent;
       width: 100px;
       font-size: 1.2rem;
-      // color: #ff9500;
     }
     .btn-li:hover {
       cursor: pointer;
@@ -97,6 +93,19 @@ export default {
   }
   a {
     color: #f4f4f4;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .login {
+    margin-top: 8em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .login {
+    form {
+      max-width: 600px;
+    }
   }
 }
 </style>

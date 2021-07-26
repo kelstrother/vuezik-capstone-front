@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  props: ["playlists"],
+  props: ["playlists"]
 };
 </script>
 

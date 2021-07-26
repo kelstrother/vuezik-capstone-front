@@ -26,11 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-p {
-  text-align: left;
-}
 .home {
-  margin-top: -15em;
   display: flex;
   flex-direction: column;
   justify-content: center;

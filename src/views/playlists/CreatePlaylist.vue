@@ -96,15 +96,19 @@ export default {
 
 <style scoped>
 .playlist-container {
-  margin-top: -20em;
+  /* margin-top: -20em; */
 }
 input {
-  box-shadow: 2px 2px 15px rgba(41, 39, 39, 0.5);
+  color: black;
 }
 .playlist-title {
-  height: 4.4vh;
+  box-shadow: 2px 2px 15px rgba(41, 39, 39, 0.5);
+  height: 2.5vh;
   border-radius: 5px;
   border: none;
+}
+.browse {
+  color: #ff9500;
 }
 button {
   box-shadow: 2px 2px 15px rgba(41, 39, 39, 0.5);

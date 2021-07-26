@@ -27,7 +27,7 @@
       <button v-if="isPending" disabled>Loading</button>
       <p>
         Already have an account?
-        <router-link to="/login"><strong> Login Here</strong></router-link>
+        <router-link to="/login"><strong>Login Here</strong></router-link>
       </p>
     </form>
   </div>
@@ -69,7 +69,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: -20em;
+  margin-top: 5em;
   padding: 0;
   box-sizing: border-box;
   color: #f4f4f4;

@@ -40,7 +40,7 @@ export default {
 <style scoped>
 .add-song {
   text-align: center;
-  margin-top: 3.5rem;
+  /* margin-top: 3.5rem; */
 }
 form {
   max-width: 400px;

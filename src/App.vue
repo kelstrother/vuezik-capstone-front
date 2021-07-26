@@ -2,7 +2,7 @@
   <header class="header-container">
     <Header class="h-comp"/>
   </header>
-    <router-view />
+  <router-view />
   <div class="content">
     <Navbar />
   </div>
@@ -40,12 +40,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.h-comp {
-  margin-left: -7em;
-}
-.z-comp {
-  margin: 2em 3em 0 0;
 }
 .content {
   margin: 0 auto;

@@ -52,12 +52,12 @@ const routes = [
     name: "ListDetails",
     component: ListDetails,
     props: true,
-  },
-  {
-    path: "/vuezicplayer",
-    name: "VuezicMachine",
-    component: VuezicMachine,
   }
+  // {
+  //   path: "/vuezicplayer",
+  //   name: "VuezicMachine",
+  //   component: VuezicMachine,
+  // }
 ]
 
 

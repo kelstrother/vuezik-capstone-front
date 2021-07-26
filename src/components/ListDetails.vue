@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style>
+.error {
+  font-size: 2rem;
+}
 .details-container {
   display: grid;
   grid-template-columns: 2fr 3fr;

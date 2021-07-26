@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <img src="../assets/background.svg" alt="vuezic logo" />
+    <img class="logo" src="../assets/vuezic-logo.png" alt="vuezic logo" />
   </header>
 </template>
 
 <script>
 export default {
-  name: "Header",
+  name: "Header"
 };
 </script>
 
@@ -14,13 +14,19 @@ export default {
 .header {
   width: 100vw;
   display: flex;
-  flex-direction: row;
+  place-items: center;
   justify-content: center;
   align-items: center;
 }
-img {
-  margin-top: 2em;
-  height: 40em;
-  padding: 0;
+.logo {
+  width: 85vw;
+  max-width: 400px;
+  height: auto;
+  padding-top: 2em;
+  display: flex;
 }
+/* @media screen and (min-width: 700px) {
+  .logo {
+}
+} */
 </style>
